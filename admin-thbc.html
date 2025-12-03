@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kaojino THBC Admin</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <!-- ethers.js -->
+  <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
+  <!-- ใช้ config เดิม (USDT / THBC / EXCHANGE) -->
+  <script src="config.js"></script>
+</head>
+<body>
+  <div class="wrap">
+
+    <div class="navbar">
+      <div class="brand">Kaojino THBC Admin</div>
+      <button id="btnConnect">Connect Owner Wallet</button>
+    </div>
+
+    <div class="card">
+      <p id="ownerStatus" class="muted">
+        Only the owner address can use this panel:<br />
+        <span class="mono">0xbfD941B45f6E9850Ba82510284426dFD3fBf25E2</span>
+      </p>
+    </div>
+
+    <!-- แสดงผลเฉพาะตอนเป็น owner เท่านั้น -->
+    <div id="adminPanel" class="card" style="display:none;">
+
+      <h2>Contract Balances</h2>
+      <p>
+        USDT in contract:
+        <strong><span id="contractUsdtBalance">-</span> USDT</strong>
+      </p>
+      <p>
+        THBC in contract:
+        <strong><span id="contractThbcBalance">-</span> THBC</strong>
+      </p>
+      <button id="btnRefresh">Refresh Balances</button>
+
+      <hr />
+
+      <h2>Exchange Rate (USDT → THBC)</h2>
+      <p>
+        Current rate:<br />
+        <strong>1 USDT = <span id="currentRate">-</span> THBC</strong>
+      </p>
+      <label for="newRateInput">Set new rate (THBC per 1 USDT)</label>
+      <input id="newRateInput" placeholder="35" />
+      <button id="btnSetRate">Update Rate</button>
+
+      <hr />
+
+      <h2>Referral Rates (USDT → THBC)</h2>
+      <p>ค่าคอมเป็น % (ระบบจะเก็บเป็น basis points ภายในสัญญา)</p>
+      <div class="row">
+        <div class="col">
+          <label for="refL1Input">Level 1 (%)</label>
+          <input id="refL1Input" placeholder="10" />
+        </div>
+        <div class="col">
+          <label for="refL2Input">Level 2 (%)</label>
+          <input id="refL2Input" placeholder="3" />
+        </div>
+        <div class="col">
+          <label for="refL3Input">Level 3 (%)</label>
+          <input id="refL3Input" placeholder="2" />
+        </div>
+      </div>
+      <button id="btnSetReferral">Update Referral Rates</button>
+
+      <hr />
+
+      <h2>Withdraw USDT</h2>
+      <label for="withdrawUsdtAmount">USDT amount</label>
+      <input id="withdrawUsdtAmount" placeholder="0" />
+      <button id="btnWithdrawUSDT">Withdraw USDT</button>
+
+      <hr />
+
+      <h2>Withdraw THBC</h2>
+      <label for="withdrawThbcAmount">THBC amount</label>
+      <input id="withdrawThbcAmount" placeholder="0" />
+      <button id="btnWithdrawTHBC">Withdraw THBC</button>
+
+      <div id="adminMessage" class="msg" style="margin-top:12px;"></div>
+    </div>
+
+  </div>
+
+  <script src="admin-thbc.js"></script>
+</body>
+</html>
