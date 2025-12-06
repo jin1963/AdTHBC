@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>THBC Owner Panel - Mint & Burn</title>
+
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- ethers.js -->
+  <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
+
+  <!-- config THBC -->
+  <script src="thbc-config.js"></script>
+
+  <!-- owner logic -->
+  <script src="thbc-owner.js" defer></script>
+</head>
+<body>
+  <div class="wrap">
+
+    <h1>THBC Owner Panel</h1>
+
+    <div class="card">
+      <button id="btnConnect">Connect (Owner)</button>
+      <p id="ownerStatus" class="muted">Not Connected</p>
+      <p><strong>Token:</strong> <span id="tokenName">-</span></p>
+    </div>
+
+    <div class="card">
+      <h2>ข้อมูลรวม</h2>
+      <p>Total Supply: <span id="totalSupply">0</span> THBC</p>
+      <p>Your Balance (Owner): <span id="ownerBalance">0</span> THBC</p>
+    </div>
+
+    <div class="card">
+      <h2>Mint THBC</h2>
+      <label>
+        To address (เว้นว่าง = owner เอง):
+        <input id="mintTo" placeholder="0x..." />
+      </label>
+      <label>
+        Amount (THBC):
+        <input id="mintAmount" placeholder="เช่น 1000000" />
+      </label>
+      <button id="btnMint">Mint THBC</button>
+    </div>
+
+    <div class="card">
+      <h2>Burn THBC</h2>
+      <p>เผา THBC จากกระเป๋า owner (current account)</p>
+      <label>
+        Amount (THBC):
+        <input id="burnAmount" placeholder="เช่น 1000" />
+      </label>
+      <button id="btnBurn">Burn THBC</button>
+    </div>
+
+    <p id="txMessage" class="msg"></p>
+  </div>
+</body>
+</html>
